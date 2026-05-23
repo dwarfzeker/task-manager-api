@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive;
+    background-color: #f5efe6;
+}
+
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 25px;
+    justify-content: center;
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    font-size: 12px;
+    padding: 10px;
+    text-align: center;
+}
+.user-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    background: #fff3b0;
+    padding: 10px 14px;
+    border-radius: 12px;
+
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+}

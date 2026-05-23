@@ -1,0 +1,64 @@
+.todo-note {
+    position: absolute;
+
+    width: 220px;
+    min-height: 180px;
+
+    padding: 20px;
+
+    border-radius: 18px;
+
+    background: #fff3b0;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.08);
+
+    transition: 0.2s;
+
+    cursor: grab;
+
+    overflow-wrap: break-word;
+}
+
+.todo-note:hover {
+    transform: scale(1.03) !important;
+}
+
+.todo-note.completed {
+    background: #d8f3dc;
+
+    opacity: 0.85;
+}
+
+.todo-checkbox {
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 18px;
+    height: 18px;
+}
+
+.todo-note h3 {
+    margin-top: 20px;
+}
+
+.todo-actions {
+    position: absolute;
+
+    bottom: 10px;
+    right: 10px;
+
+    display: flex;
+    gap: 6px;
+}
+
+.todo-actions button {
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
