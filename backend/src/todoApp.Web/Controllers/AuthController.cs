@@ -32,6 +32,14 @@ public class AuthController : ControllerBase
         };
         await _repository.CreateAsync(user);
         var token = _jwtService.GenerateToken(user);
+        Response.Cookies.Append("AccessToken", token, new CookieOptions
+        {
+            HttpOnly = true,
+            Secure = false,
+            SameSite = SameSiteMode.Lax,
+            Expires = DateTime.UtcNow.AddDays(7),
+            Path = "/"
+        });
         return Ok(new AuthResponseDTO
         {
             Token = token,
@@ -53,9 +61,10 @@ public class AuthController : ControllerBase
         Response.Cookies.Append("AccessToken", token, new CookieOptions
         {
             HttpOnly = true,
-            Secure = true,
-            SameSite = SameSiteMode.Strict,
-            Expires = DateTime.UtcNow.AddDays(7)
+            Secure = false,
+            SameSite = SameSiteMode.Lax,
+            Expires = DateTime.UtcNow.AddDays(7),
+            Path = "/"
         });
         return Ok(new AuthResponseDTO
         {

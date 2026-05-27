@@ -1,7 +1,6 @@
 import { logout } from "../../api/authApi";
 
 export default function ProfileModal({ onClose, profile }) {
-  // ❌ Убираем useState и useEffect - данные уже пришли от родителя
 
   if (!profile) {
     return (
@@ -15,8 +14,8 @@ export default function ProfileModal({ onClose, profile }) {
   const handleLogout = async () => {
     try {
       await logout();
-      onClose(); // закрываем модалку
-      window.location.reload(); // или переходим на логин
+      onClose(); 
+      window.location.reload(); 
     } catch (err) {
       console.error("Logout failed:", err);
     }
@@ -32,32 +31,32 @@ export default function ProfileModal({ onClose, profile }) {
       <h2>✨ Your stats</h2>
 
       <div className="stat-row">
-        <span>✅ Completed</span>
+        <span>✅ Completed </span>
         <b>{profile.completedTasks}</b>
       </div>
 
       <div className="stat-row">
-        <span>📋 Total</span>
+        <span>📋 Total </span>
         <b>{profile.totalTasksCount || 0}</b>
       </div>
 
       <div className="stat-row">
-        <span>🔥 Streak</span>
+        <span>🔥 Streak </span>
         <b>{profile.currentStreak || 0}</b>
       </div>
 
       <div className="stat-row">
-        <span>🏆 Best streak</span>
+        <span>🏆 Best streak </span>
         <b>{profile.longestStreak || 0}</b>
       </div>
 
       <div className="stat-row">
-        <span>📈 Completion</span>
+        <span>📈 Completion </span>
         <b>{Math.round(profile.completionRate || 0)}%</b>
       </div>
 
       <div className="stat-row">
-        <span>🕒 Last activity</span>
+        <span>🕒 Last activity </span>
         <b>
           {profile.lastActivity
             ? new Date(profile.lastActivity).toLocaleDateString()

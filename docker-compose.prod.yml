@@ -1,0 +1,66 @@
+# docker-compose.prod.yml
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=/api  # В продакшене через nginx
+    container_name: todoapp-frontend
+    restart: unless-stopped
+    networks:
+      - todoapp-network
+
+  backend:
+    build:
+      context: ./backend/src
+      dockerfile: Dockerfile
+    container_name: todoapp-backend
+    restart: unless-stopped
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Secret=${JWT_SECRET}
+      - Jwt__Issuer=${JWT_ISSUER:-TodoApp}
+      - Jwt__Audience=${JWT_AUDIENCE:-TodoAppUsers}
+      - Admin__InitialPassword=${ADMIN_PASSWORD}
+      - Admin__Email=${ADMIN_EMAIL}
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/todos.db
+      - CORS__AllowedOrigins=https://yourdomain.com
+    volumes:
+      - backend-data:/app/data
+      - backend-avatars:/app/wwwroot/avatars
+    networks:
+      - todoapp-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  nginx:
+    image: nginx:alpine
+    container_name: todoapp-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/prod.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - todoapp-network
+
+volumes:
+  backend-data:
+  backend-avatars:
+
+networks:
+  todoapp-network:
+    driver: bridge

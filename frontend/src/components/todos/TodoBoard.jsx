@@ -9,7 +9,7 @@ import {
 } from "../../api/todoApi";
 
 import TodoNote from "./TodoNote";
-import TodoModal from "./TodoModal";
+import TodoModal from "./todoModal";
 
 export default function TodoBoard() {
   const [todos, setTodos] = useState([]);
@@ -24,28 +24,67 @@ export default function TodoBoard() {
   }, [selectedDate]);
 
 async function loadTodos() {
-    console.log('Loading todos for date:', selectedDate);  // ← отладка
+    console.log('Loading todos for date:', selectedDate);  
     
     try {
         const data = await getTodos(selectedDate);
-        console.log('Loaded todos:', data);  // ← отладка
+        console.log('Loaded todos:', data); 
         setTodos(data);
+        
+        setTimeout(() => {
+            console.log('Current todos state after setTodos:', todos);
+        }, 100);
     } catch (error) {
         console.error('Load error:', error);
     }
 }
 
-  async function handleToggleComplete(todo) {
-    await updateTodo(todo.id, {
-      ...todo,
-      isCompleted: !todo.isCompleted
-    });
-    await loadTodos();  // ✅ обновляем ПОСЛЕ изменения
-  }
+async function handleToggleComplete(todo) {
+    const newCompletedStatus = !todo.isCompleted;
+    
+    // 👇 1. Сразу обновляем UI (оптимистичное обновление)
+    setTodos(prevTodos => 
+        prevTodos.map(t => 
+            t.id === todo.id 
+                ? { ...t, isCompleted: newCompletedStatus }
+                : t
+        )
+    );
+    
+    try {
+        // 👇 2. Отправляем запрос на сервер
+        const updatedTodo = await updateTodo(todo.id, {
+            title: todo.title,
+            description: todo.description || "",
+            isCompleted: newCompletedStatus
+        });
+        
+        // 👇 3. Сверяем с ответом сервера
+        if (updatedTodo.isCompleted !== newCompletedStatus) {
+            console.warn('Server returned different status, syncing...');
+            await loadTodos(); // Перезагружаем если рассинхрон
+        }
+        
+    } catch (error) {
+        // 👇 4. Если ошибка - откатываем изменения
+        console.error('Failed to toggle todo:', error);
+        setTodos(prevTodos => 
+            prevTodos.map(t => 
+                t.id === todo.id 
+                    ? { ...t, isCompleted: todo.isCompleted }
+                    : t
+            )
+        );
+    }
+}
 
 async function handleSave(todoData) {
-    console.log('Saving todo:', todoData);  // ← отладка
-    
+    console.log('Saving todo:', todoData); 
+        const payload = {
+            title: todoData.title,
+            description: todoData.description || '',
+            targetDate: selectedDate  
+        };
     try {
         if (editingTodo) {
             await updateTodo(editingTodo.id, { ...editingTodo, ...todoData });
@@ -55,7 +94,7 @@ async function handleSave(todoData) {
         
         setShowModal(false);
         setEditingTodo(null);
-        await loadTodos();  // ← дождаться загрузки
+        await loadTodos();  
     } catch (error) {
         console.error('Save error:', error);
         alert('Failed to save task');
@@ -121,6 +160,7 @@ async function handleSave(todoData) {
               setShowModal(true);
             }} 
             onToggleComplete={() => handleToggleComplete(todo)}
+            refresh={loadTodos} 
           />  
         ))}  
       </div> 

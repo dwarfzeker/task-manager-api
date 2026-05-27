@@ -1,3 +1,4 @@
+
 import TodoBoard from "../todos/TodoBoard";
 import ProfileModal from "../profile/ProfileModal";
 import { useEffect } from "react";
@@ -37,22 +38,18 @@ async function loadProfile() {
     console.error(err);
   }
 }
+  const handleOpenProfile = async () => {
+    await loadProfile(); 
+    setShowProfile(true);
+  };
   return (
 
     <div className="planner-page">
 
-      {/* PROFILE BUTTON */}
 
-      <div
-        className="user-pill"
-        onClick={() =>
-          setShowProfile(!showProfile)
-        }
-      >
+      <div className="user-pill" onClick={handleOpenProfile}>
         👤 {profile?.name || "loading"}
       </div>
-
-      {/* PROFILE MODAL */}
 
       {showProfile && (
 
@@ -68,7 +65,6 @@ async function loadProfile() {
         </div>
       )}
 
-      {/* DECOR */}
 
       <img
         src={cake}
@@ -90,7 +86,7 @@ async function loadProfile() {
         className="decor decor-4"
       />
 
-      {/* TASKS */}
+
 
       <section
         className="
@@ -107,7 +103,7 @@ async function loadProfile() {
 
       </section>
 
-      {/* HABITS */}
+
 
       <section
         className="
@@ -124,7 +120,6 @@ async function loadProfile() {
 
       </section>
 
-      {/* MOOD */}
 
       <section
         className="

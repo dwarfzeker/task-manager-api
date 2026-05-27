@@ -31,6 +31,7 @@
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.DI/obj/Debug/net9.0/todoApp.DI.AssemblyInfoInputs.cache
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.DI/obj/Debug/net9.0/todoApp.DI.AssemblyInfo.cs
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.DI/obj/Debug/net9.0/todoApp.DI.csproj.CoreCompileInputs.cache
+/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.DI/obj/Debug/net9.0/todoApp.DI.sourcelink.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.DI/obj/Debug/net9.0/todoApp.DI.csproj.Up2Date
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.DI/obj/Debug/net9.0/todoApp.DI.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.DI/obj/Debug/net9.0/refint/todoApp.DI.dll

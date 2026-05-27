@@ -40,6 +40,7 @@
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Data/obj/Debug/net9.0/todoApp.Data.AssemblyInfoInputs.cache
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Data/obj/Debug/net9.0/todoApp.Data.AssemblyInfo.cs
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Data/obj/Debug/net9.0/todoApp.Data.csproj.CoreCompileInputs.cache
+/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Data/obj/Debug/net9.0/todoApp.Data.sourcelink.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Data/obj/Debug/net9.0/rjimswa.dswa.cache.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Data/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Data/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json

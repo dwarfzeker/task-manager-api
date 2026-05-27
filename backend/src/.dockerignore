@@ -13,7 +13,6 @@
 **/publish
 **/node_modules
 **/wwwroot/dist
-**/todoApp.UnitTests
 **/*.md
 **/docker-compose*
 **/Dockerfile*

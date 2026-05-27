@@ -37,79 +37,43 @@ export default function TodoNote({
     const offsetY =
       e.clientY - noteRect.top;
 
-    function onMouseMove(ev) {
-
-      let x =
-        ev.clientX -
-        boardRect.left -
-        offsetX;
-
-      let y =
-        ev.clientY -
-        boardRect.top -
-        offsetY;
-
-      const maxX =
-        boardRect.width - noteRect.width;
-
-      const maxY =
-        boardRect.height - noteRect.height;
-
-	x = Math.max(
-  		0,
-  		Math.min(x, maxX - 20)
-	);
-
-	y = Math.max(
-  		0,
-  		Math.min(y, maxY - 20)
-	);
-
-      note.style.left =
-        `${(x / boardRect.width) * 100}%`;
-
-      note.style.top =
-        `${(y / boardRect.height) * 100}%`;
+function onMouseMove(ev) {
+    let x = ev.clientX - boardRect.left - offsetX;
+    let y = ev.clientY - boardRect.top - offsetY;
+    
+    // Ограничиваем движение в пределах доски
+    x = Math.max(0, Math.min(x, boardRect.width - noteRect.width));
+    y = Math.max(0, Math.min(y, boardRect.height - noteRect.height));
+    
+    // Устанавливаем позицию в ПРОЦЕНТАХ для CSS
+    note.style.left = `${(x / boardRect.width) * 100}%`;
+    note.style.top = `${(y / boardRect.height) * 100}%`;
+}
+async function onMouseUp(ev) {
+    document.removeEventListener("mousemove", onMouseMove);
+    document.removeEventListener("mouseup", onMouseUp);
+    
+    setDragging(false);
+    
+    // Вычисляем позицию в пикселях
+    let x = ev.clientX - boardRect.left - offsetX;
+    let y = ev.clientY - boardRect.top - offsetY;
+    
+    // Ограничиваем в ПИКСЕЛЯХ
+    x = Math.max(0, Math.min(x, boardRect.width - noteRect.width));
+    y = Math.max(0, Math.min(y, boardRect.height - noteRect.height));
+    
+    // Конвертируем в проценты
+    const percentX = (x / boardRect.width) * 100;
+    const percentY = (y / boardRect.height) * 100;
+    
+    try {
+        await updatePosition(todo.id, percentX, percentY);
+        if (refresh) refresh();  // Теперь refresh будет работать
+    } catch (error) {
+        console.error('Failed to update position:', error);
     }
-
-    async function onMouseUp(ev) {
-
-      document.removeEventListener(
-        "mousemove",
-        onMouseMove
-      );
-
-      document.removeEventListener(
-        "mouseup",
-        onMouseUp
-      );
-
-      setDragging(false);
-
-      let x =
-        ev.clientX -
-        boardRect.left -
-        offsetX;
-
-      let y =
-        ev.clientY -
-        boardRect.top -
-        offsetY;
-
-      x =
-        (x / boardRect.width) * 100;
-
-      y =
-        (y / boardRect.height) * 100;
-
-      await updatePosition(
-        todo.id,
-        x,
-        y
-      );
-
-      refresh();
-    }
+}
 
     document.addEventListener(
       "mousemove",

@@ -113,67 +113,6 @@ body {
     bottom: 60px;
     left: 70px;
     transform: rotate(8deg);
-}import { updateTodo, getTodos} from "../../api/todoApi";
-export default function TodoNote({
-  todo,
-  index,
-  onDelete,
-  onEdit,
-  onToggleComplete,
-  refresh
-}) {
-
-  async function toggleComplete() {
-    const cleanTodo = {
-        title: todo.title,
-        description: todo.description || "",
-        isCompleted: !todo.isCompleted
-    };
-    
-    await updateTodo(todo.id, cleanTodo);
-    await getTodos(todo.date);
-  }
-
-  return (
-    <div
-      className={`todo-note ${
-        todo.isCompleted ? "completed" : ""
-      }`}
-      style={{
-        top: `${todo.y}%`,
-        left: `${todo.x}%`,
-        transform: `rotate(${(index % 5 - 2) * 4}deg)`
-      }}
-    >
-
-      <input
-        type="checkbox"
-        className="todo-checkbox"
-        checked={todo.isCompleted}
-        onChange={onToggleComplete}
-        
-      />
-
-      <h3>{todo.title}</h3>
-
-      {todo.description && (
-        <p>{todo.description}</p>
-      )}
-
-      <div className="todo-actions">
-
-        <button onClick={onEdit}>
-          ✏️
-        </button>
-
-        <button onClick={onDelete}>
-          ❌
-        </button>
-
-      </div>
-
-    </div>
-  );
 }
 
 .decor-bottom-right {
@@ -223,7 +162,7 @@ export default function TodoNote({
 
 /* сам стикер */
 .todo-note {
-    position: relative;
+    position: absolute;
     width: 140px;
     min-height: 120px;
     padding: 12px;

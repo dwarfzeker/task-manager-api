@@ -185,6 +185,7 @@
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/todoApp.Data.staticwebassets.endpoints.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/appsettings.Development.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/appsettings.json
+/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/appsettings.Production.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/publish/linux-x64/appsettings.Development.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/publish/linux-x64/appsettings.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/publish/linux-x64/todoApp.Web.deps.json
@@ -350,6 +351,7 @@
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/todoApp.Web.csproj.CoreCompileInputs.cache
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/todoApp.Web.MvcApplicationPartsAssemblyInfo.cs
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/todoApp.Web.MvcApplicationPartsAssemblyInfo.cache
+/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/todoApp.Web.sourcelink.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/rjimswa.dswa.cache.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/rjsmrazor.dswa.cache.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/rjsmcshtml.dswa.cache.json

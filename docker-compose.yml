@@ -1,0 +1,76 @@
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        - REACT_APP_API_URL=http://localhost
+        - REACT_APP_AUTH_URL=http://localhost/api/auth
+        - VITE_API_URL=http://localhost/api  
+        - VITE_API_URL=/api
+      dockerfile: Dockerfile
+    container_name: todoapp-frontend
+    ports:
+      - "5173:80"  
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_URL=http://localhost
+    volumes:
+      - ./frontend/src:/app/src  
+      - ./frontend/public:/app/public
+
+    networks:
+      - todoapp-network
+
+  backend:
+    build:
+      context: ./backend/src
+      dockerfile: Dockerfile
+    container_name: todoapp-backend
+    ports:
+      - "8080"  
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081 
+      - Jwt__Secret=${JWT_SECRET:-dev-secret-key-minimum-64-characters-long-for-development-only}
+      - Jwt__Issuer=TodoApp
+      - Jwt__Audience=TodoAppUsers
+      - Admin__InitialPassword=${ADMIN_PASSWORD:-Admin123!}
+      - Admin__Email=${ADMIN_EMAIL:-admin@todoapp.local}
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/todos.db
+      - CORS__AllowedOrigins=http://localhost:5173,http://localhost,http://localhost:80
+    volumes:
+      - backend-data:/app/data
+      - backend-avatars:/app/wwwroot/avatars
+    networks:
+      - todoapp-network
+
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      
+
+  nginx:
+    image: nginx:alpine  
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - todoapp-network
+
+volumes:
+  backend-data:
+  backend-avatars:
+
+networks:
+  todoapp-network:
+    driver: bridge

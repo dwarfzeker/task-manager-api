@@ -37,7 +37,7 @@ public class TaskController : ControllerBase
         _deletedEvent = deletedEvent;
     }
 
-    public string GetUserId()
+    private string GetUserId()
     { 
         var id =  User.FindFirst(ClaimTypes.NameIdentifier)?.Value
                ?? throw new UnauthorizedAccessException($"user not authenticated. please provide a valid token. token you gave is {ClaimTypes.NameIdentifier}");

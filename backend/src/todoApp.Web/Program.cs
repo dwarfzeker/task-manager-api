@@ -21,9 +21,11 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy.WithOrigins(
-                "http://localhost:5173",  
+                "http://localhost:4173",  
                 "http://localhost:3000",  
-                "http://localhost:1234"  
+                "http://localhost:1234",
+                "http://localhost:8080",
+                "http://localhost"
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
@@ -78,7 +80,7 @@ builder.Services.ConfigureServces();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     var dbPath = Path.Combine(Directory.GetCurrentDirectory(), "todos.db");
-    options.UseSqlite($"Data Source={dbPath}", b => b.MigrationsAssembly("todoApp.Web"));
+    options.UseSqlite($"Data Source={dbPath}", b => b.MigrationsAssembly("todoApp.Data"));
 });
 
 var dbPath = builder.Configuration.GetConnectionString("DefaultConnection") 
@@ -187,14 +189,14 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<LastActivityMiddleware>();
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
 }
 
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.Run();
 
