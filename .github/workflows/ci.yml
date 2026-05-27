@@ -19,13 +19,14 @@ jobs:
           dotnet-version: '8.0.x'
       
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore /backend/src/todoApp.Web
       
       - name: Build
-        run: dotnet build --no-restore
+        run: dotnet build --no-restore /backend/src/todoApp.Web
       
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        run: dotnet test --no-build --verbosity normal 
+/backend/src/todoApp.Web
       
       - name: Upload coverage
         uses: actions/upload-artifact@v4

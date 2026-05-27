@@ -18,10 +18,11 @@ jobs:
           dotnet-version: '8.0.x'
       
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore /backend/src/todoApp.Web
       
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build --no-restore --configuration Release 
+/backend/src/todoApp.Web
       
       - name: Test
         run: dotnet test --no-build --configuration Release --verbosity normal
