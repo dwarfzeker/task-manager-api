@@ -1,6 +1,8 @@
 using todoApp.Core.Entities;
+using System.Diagnostics.CodeAnalysis;
 namespace todoApp.Core.DTOs;
 
+[ExcludeFromCodeCoverage]
 public class TakeListResponseDTO
 {
     public IEnumerable<TakeResponseDTO> Items { get; set; } = new List<TakeResponseDTO>();

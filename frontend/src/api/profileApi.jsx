@@ -1,17 +1,20 @@
 async function apiFetch(url, options = {}) {
-    return fetch(url, {
+return fetch(url, {
         credentials: "include",
-        ...options,
+        cache: "no-cache", // ✅ добавляем это!
         headers: {
             "Content-Type": "application/json",
+            "Cache-Control": "no-cache", // ✅ и это
+            "Pragma": "no-cache",        // ✅ и это
             ...(options.headers || {})
-        }
+        },
+        ...options
     });
 }
 
 export async function getProfile() {
     const res = await apiFetch('/api/auth/profile', {
-    methood: "GET",
+    method: "GET",
     credentials: "include"
     });
 

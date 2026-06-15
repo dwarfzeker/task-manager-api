@@ -34,7 +34,7 @@ services:
       - ASPNETCORE_URLS=http://+:8080
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081 
-      - Jwt__Secret=${JWT_SECRET:-dev-secret-key-minimum-64-characters-long-for-development-only}
+      - Jwt__Secret=${JWT_SECRET}
       - Jwt__Issuer=TodoApp
       - Jwt__Audience=TodoAppUsers
       - Admin__InitialPassword=${ADMIN_PASSWORD:-Admin123!}

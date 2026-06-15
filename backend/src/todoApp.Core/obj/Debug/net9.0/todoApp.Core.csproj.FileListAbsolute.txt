@@ -39,6 +39,7 @@
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Core/obj/Debug/net9.0/staticwebassets.build.json.cache
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Core/obj/Debug/net9.0/staticwebassets.development.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Core/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Core/obj/Debug/net9.0/swae.build.ex.cache
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Core/obj/Debug/net9.0/todoApp.Core.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Core/obj/Debug/net9.0/refint/todoApp.Core.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Core/obj/Debug/net9.0/todoApp.Core.pdb

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zWFQWh7ikPQ=",
+  "dgSpecHash": "u+E7791gdM4=",
   "success": true,
   "projectFilePath": "/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.DI/todoApp.DI.csproj",
   "expectedPackageFiles": [
@@ -35,7 +35,9 @@
     "/Users/polinafurkalo/.nuget/packages/sqlitepclraw.provider.e_sqlite3/2.1.10/sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512",
     "/Users/polinafurkalo/.nuget/packages/system.identitymodel.tokens.jwt/8.18.0/system.identitymodel.tokens.jwt.8.18.0.nupkg.sha512",
     "/Users/polinafurkalo/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
-    "/Users/polinafurkalo/.nuget/packages/system.text.json/9.0.14/system.text.json.9.0.14.nupkg.sha512"
+    "/Users/polinafurkalo/.nuget/packages/system.text.json/9.0.14/system.text.json.9.0.14.nupkg.sha512",
+    "/Users/polinafurkalo/.nuget/packages/microsoft.netcore.app.ref/9.0.17/microsoft.netcore.app.ref.9.0.17.nupkg.sha512",
+    "/Users/polinafurkalo/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.17/microsoft.aspnetcore.app.ref.9.0.17.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,5 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 namespace todoApp.Core.DTOs;
 
+[ExcludeFromCodeCoverage]
 public class UserStatsDTO
 {
     public string Name { get; set; } = string.Empty;

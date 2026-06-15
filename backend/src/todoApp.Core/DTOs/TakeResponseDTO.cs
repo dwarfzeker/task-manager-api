@@ -1,7 +1,9 @@
 using System.Runtime.InteropServices.JavaScript;
 using todoApp.Core.Entities;
+using System.Diagnostics.CodeAnalysis;
 namespace todoApp.Core.DTOs;
 
+[ExcludeFromCodeCoverage]
 public class TakeResponseDTO
 {
     public Guid Id { get; set; }

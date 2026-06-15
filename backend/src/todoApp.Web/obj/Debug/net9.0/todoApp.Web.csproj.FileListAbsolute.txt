@@ -250,7 +250,6 @@
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/System.Composition.TypedParts.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/System.Diagnostics.DiagnosticSource.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/System.IdentityModel.Tokens.Jwt.dll
-/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/System.Text.Json.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/cs/Microsoft.CodeAnalysis.resources.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/de/Microsoft.CodeAnalysis.resources.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/bin/Debug/net9.0/es/Microsoft.CodeAnalysis.resources.dll
@@ -360,6 +359,7 @@
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/staticwebassets.build.json.cache
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/staticwebassets.development.json
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/staticwebassets.build.endpoints.json
+/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/swae.build.ex.cache
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/todoApp..440DB86B.Up2Date
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/todoApp.Web.dll
 /Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Web/obj/Debug/net9.0/refint/todoApp.Web.dll

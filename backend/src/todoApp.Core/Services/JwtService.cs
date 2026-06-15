@@ -17,7 +17,7 @@ public class JwtService: IJwtService
 
     public JwtService(IConfiguration configuration)
     {
-        _secret = configuration["Jwt:Secret"] ?? throw new Exception("JWT not configured");
+        _secret = configuration["JwtSettings:Secret"] ?? configuration["Jwt:Secret"];
         _isuuer = configuration["Jwt:Issuer"] ?? "TodoApp";
         _audience = configuration["Jwt:Audience"] ?? "TodoAppUsers";
     }

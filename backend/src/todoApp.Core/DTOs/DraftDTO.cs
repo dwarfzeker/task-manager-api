@@ -1,5 +1,7 @@
+using System.Diagnostics.CodeAnalysis;
 namespace todoApp.Core.DTOs;
 
+[ExcludeFromCodeCoverage]
 public class DraftDTO
 {
     public string Id { get; set; } = Guid.NewGuid().ToString();
@@ -11,6 +13,7 @@ public class DraftDTO
     
 }
 
+[ExcludeFromCodeCoverage]
 public class TaskDraftAction
 {
     public string ActionId { get; set; } = Guid.NewGuid().ToString();
@@ -30,6 +33,7 @@ public enum DraftActionType
     PositionChange
 }
 
+[ExcludeFromCodeCoverage]
 public class DraftContext
 {
     public DateTime? SelectedDate {get; set;}

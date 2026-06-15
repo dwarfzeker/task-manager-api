@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HMZV0W2rfZ4=",
+  "dgSpecHash": "nlRprB5TcUA=",
   "success": true,
   "projectFilePath": "/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.UnitTests/todoApp.UnitTests.csproj",
   "expectedPackageFiles": [
@@ -88,7 +88,9 @@
     "/Users/polinafurkalo/.nuget/packages/xunit.core/2.9.3/xunit.core.2.9.3.nupkg.sha512",
     "/Users/polinafurkalo/.nuget/packages/xunit.extensibility.core/2.9.3/xunit.extensibility.core.2.9.3.nupkg.sha512",
     "/Users/polinafurkalo/.nuget/packages/xunit.extensibility.execution/2.9.3/xunit.extensibility.execution.2.9.3.nupkg.sha512",
-    "/Users/polinafurkalo/.nuget/packages/xunit.runner.visualstudio/2.8.2/xunit.runner.visualstudio.2.8.2.nupkg.sha512"
+    "/Users/polinafurkalo/.nuget/packages/xunit.runner.visualstudio/2.8.2/xunit.runner.visualstudio.2.8.2.nupkg.sha512",
+    "/Users/polinafurkalo/.nuget/packages/microsoft.netcore.app.ref/9.0.17/microsoft.netcore.app.ref.9.0.17.nupkg.sha512",
+    "/Users/polinafurkalo/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.17/microsoft.aspnetcore.app.ref.9.0.17.nupkg.sha512"
   ],
   "logs": []
 }

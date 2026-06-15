@@ -7,7 +7,7 @@ import {
   updateTodo,
   updatePosition
 } from "../../api/todoApi";
-
+import useProfile from "../../hooks/useProfile"
 import TodoNote from "./TodoNote";
 import TodoModal from "./todoModal";
 
@@ -22,6 +22,9 @@ export default function TodoBoard() {
   useEffect(() => {
     loadTodos();
   }, [selectedDate]);
+  
+  
+  const { profile, refreshProfile } = useProfile([selectedDate]);
 
 async function loadTodos() {
     console.log('Loading todos for date:', selectedDate);  
@@ -42,7 +45,6 @@ async function loadTodos() {
 async function handleToggleComplete(todo) {
     const newCompletedStatus = !todo.isCompleted;
     
-    // 👇 1. Сразу обновляем UI (оптимистичное обновление)
     setTodos(prevTodos => 
         prevTodos.map(t => 
             t.id === todo.id 
@@ -52,21 +54,19 @@ async function handleToggleComplete(todo) {
     );
     
     try {
-        // 👇 2. Отправляем запрос на сервер
         const updatedTodo = await updateTodo(todo.id, {
             title: todo.title,
             description: todo.description || "",
             isCompleted: newCompletedStatus
         });
         
-        // 👇 3. Сверяем с ответом сервера
         if (updatedTodo.isCompleted !== newCompletedStatus) {
             console.warn('Server returned different status, syncing...');
-            await loadTodos(); // Перезагружаем если рассинхрон
+            await loadTodos(); 
         }
+        await refreshProfile();
         
     } catch (error) {
-        // 👇 4. Если ошибка - откатываем изменения
         console.error('Failed to toggle todo:', error);
         setTodos(prevTodos => 
             prevTodos.map(t => 
@@ -95,11 +95,18 @@ async function handleSave(todoData) {
         setShowModal(false);
         setEditingTodo(null);
         await loadTodos();  
+        await refreshProfile(); 
     } catch (error) {
         console.error('Save error:', error);
         alert('Failed to save task');
     }
 }
+
+  async function handleDelete(id) {
+    await deleteTodo(id);
+    await loadTodos();
+    await refreshProfile(); 
+  }
 
   return (
     <div className="board-warpper">
@@ -152,7 +159,7 @@ async function handleSave(todoData) {
             todo={todo}
             index={index}
             onDelete={async () => {
-              await deleteTodo(todo.id);
+              await handleDelete(todo.id);
               await loadTodos();
             }}
             onEdit={async () => {

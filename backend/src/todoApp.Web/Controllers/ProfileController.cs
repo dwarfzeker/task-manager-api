@@ -11,25 +11,27 @@ namespace todoApp.Web.Controllers;
 [Route("api/auth")]
 public class ProfileController : ControllerBase
 {
-    private readonly ICachedStatsService _statsService;
+    private readonly IStatsService _statsService;
 
 
-    public ProfileController(ICachedStatsService statsService)
+    public ProfileController(IStatsService statsService)
     {
         _statsService = statsService;
     }
     private string GetUserId()
     {
-        var id = User.FindFirst(ClaimTypes.NameIdentifier)!.Value ?? throw new UnauthorizedAccessException($"user not authenticated. please provide a correct token");
-        return id;
+        var id = User.FindFirst(ClaimTypes.NameIdentifier);
+        if (id == null || string.IsNullOrEmpty(id.Value)) throw new UnauthorizedAccessException();
+        return id.Value;
     }
     [HttpGet("profile")]
-    [ResponseCache(Duration = 60, Location = ResponseCacheLocation.Client)]
-    public  IActionResult GetProfile()
+    public async Task<IActionResult> GetProfile()
     {
         var id = GetUserId();
-        var stats = _statsService.GetUserStats(id).Result;
-
+        var stats = await _statsService.GetUserStats(id);
+        Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+        Response.Headers["Pragma"] = "no-cache";
+        Response.Headers["Expires"] = "0";
         return Ok(stats);
     }
 }

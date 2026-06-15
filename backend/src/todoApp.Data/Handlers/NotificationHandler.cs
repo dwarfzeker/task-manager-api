@@ -1,9 +1,11 @@
 using todoApp.Core.Interfaces;
 using todoApp.Core.Events;
+using System.Diagnostics.CodeAnalysis;
 
 
 namespace todoApp.Data.Handlers;
 
+[ExcludeFromCodeCoverage]
 public class NotificationHandler : IEventHandler<TaskCompletedEvent>, IEventHandler<TaskCreatedEvent>
 {
     public DateTime OccuredAt { get; set; } = DateTime.UtcNow;

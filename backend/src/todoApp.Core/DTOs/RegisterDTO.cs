@@ -1,6 +1,8 @@
 using  System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 namespace todoApp.Core.DTOs;
 
+[ExcludeFromCodeCoverage]
 public class RegisterDTO
 {
     [Required]

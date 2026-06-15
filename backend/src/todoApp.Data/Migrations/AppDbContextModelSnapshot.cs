@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using todoApp.Data;
+using System.Diagnostics.CodeAnalysis;
 
 #nullable disable
 
 namespace todoApp.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
+    [ExcludeFromCodeCoverage]
     partial class AppDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

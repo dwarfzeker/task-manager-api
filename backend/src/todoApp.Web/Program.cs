@@ -2,19 +2,32 @@ using System.Text;
 using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Security.Claims;
+using System.Diagnostics.CodeAnalysis;
+
 using todoApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using todoApp.DI;
 using todoApp.Web.Middleware;
-
 var builder = WebApplication.CreateBuilder(args);
-builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: false)
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
-    .AddUserSecrets<Program>()
     .AddEnvironmentVariables();
-
+builder.Configuration.AddUserSecrets<Program>();
+var jwtSecret = builder.Configuration["JwtSettings:Secret"];
+var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+var jwtAudience = builder.Configuration["Jwt:Audience"];
+Console.WriteLine($"JWTsettings Secret loaded: {(string.IsNullOrEmpty(jwtSecret) ? "❌ NO" : "✅ YES")}");
+if (string.IsNullOrEmpty(jwtSecret))
+{
+    jwtSecret = builder.Configuration["Jwt:Secret"];
+    Console.WriteLine($"JWT Secret loaded: {(string.IsNullOrEmpty(jwtSecret) ? "❌ NO" : "✅ YES")}");
+}
+Console.WriteLine($"JWT Secret length: {jwtSecret?.Length ?? 0}");
+Console.WriteLine($"JWT Issuer: {jwtIssuer ?? "NOT SET"}");
+Console.WriteLine($"JWT Audience: {jwtAudience ?? "NOT SET"}");
 
 builder.Services.AddCors(options =>
 {
@@ -98,7 +111,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["Jwt:Issuer"],
         ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]!)),
+        IssuerSigningKey = builder.Configuration["JwtSettings:Secret"] == null ? 
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"])) : 
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtSettings:Secret"])),
     };
     options.Events = new JwtBearerEvents
     {
@@ -155,30 +170,35 @@ builder.Logging.AddDebug();
 builder.Logging.SetMinimumLevel(LogLevel.Debug);
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    //dbContext.Database.EnsureDeleted();  // Удаляет старую БД
-   // dbContext.Database.EnsureCreated(); 
-    dbContext.Database.Migrate();        // Создаёт новую с миграциями
-    Console.WriteLine("Database migrated successfully!");
-}
+
 foreach (var source in builder.Configuration.Sources)
 {
     Console.WriteLine($"Config source: {source.GetType().Name}");
 }
 
-var secret = builder.Configuration["Jwt:Secret"];
-if (string.IsNullOrEmpty(secret))
+using (var scope = app.Services.CreateScope())
 {
-    Console.WriteLine("❌ JWT Secret not found! Check user secrets.");
-    Console.WriteLine($"UserSecretsId: {builder.Configuration.GetValue<string>("UserSecretsId")}");
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    try
+    {
+        // Применяем миграции, если база не существует или устарела
+        dbContext.Database.Migrate();
+        Console.WriteLine("✅ Database migrations applied successfully");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ Error applying migrations: {ex.Message}");
+        
+        // Для SQLite - создаём базу, если её нет
+        if (ex.Message.Contains("no such table"))
+        {
+            Console.WriteLine("Creating database from scratch...");
+            dbContext.Database.EnsureCreated();
+            Console.WriteLine("✅ Database created successfully");
+        }
+    }
 }
-else
-{
-    Console.WriteLine($"✅ JWT Secret loaded (length: {secret.Length})");
-    Console.WriteLine($"First 10 chars: {secret[..10]}...");
-}
+
 
 app.UseResponseCaching();
 app.UseRouting();
@@ -189,16 +209,15 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseMiddleware<LastActivityMiddleware>();
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
-{
-    app.UseSwagger();
-}
+
+app.UseSwagger();
+
 
 app.UseSwaggerUI();
 
-//app.UseHttpsRedirection();
+
 
 app.Run();
 
-
+[ExcludeFromCodeCoverage]
 public partial class Program { }

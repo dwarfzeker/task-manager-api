@@ -1,7 +1,9 @@
 using todoApp.Core.Interfaces;
+using System.Diagnostics.CodeAnalysis;
 
 namespace todoApp.Core.Events;
 
+[ExcludeFromCodeCoverage]
 public class TaskCreatedEvent : IDomainEvent
 {
     public string UserId { get; set; }

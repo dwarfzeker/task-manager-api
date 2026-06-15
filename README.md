@@ -5,7 +5,7 @@
 [![Status](https://img.shields.io/badge/status-active%20development-brightgreen)]()
 
 
-## Why ths project stands out
+## Why this project stands out
 
 | Feature | Implementation |
 | :--- | :--- |
@@ -43,7 +43,6 @@ We chose `HttpOnly` cookies and eliminated the XSS vector entirely. The remainin
 
 - Habit tracker which transforms simple task manager into a personal analytics platform with daily habit streaks
 - Mood tracker with statistic and graph of mood for a month
-- More tests!
 - Protection from CSRF attacks
 - CI/CD pipeline
 - Transfer to posgreSQL

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zxjjL0/6QsM=",
+  "dgSpecHash": "axiFu4UbY14=",
   "success": true,
   "projectFilePath": "/Users/polinafurkalo/RiderProjects/todoApp-fullstackRelease/backend/src/todoApp.Core/todoApp.Core.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,9 @@
     "/Users/polinafurkalo/.nuget/packages/microsoft.identitymodel.protocols/8.0.1/microsoft.identitymodel.protocols.8.0.1.nupkg.sha512",
     "/Users/polinafurkalo/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/8.0.1/microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512",
     "/Users/polinafurkalo/.nuget/packages/microsoft.identitymodel.tokens/8.18.0/microsoft.identitymodel.tokens.8.18.0.nupkg.sha512",
-    "/Users/polinafurkalo/.nuget/packages/system.identitymodel.tokens.jwt/8.18.0/system.identitymodel.tokens.jwt.8.18.0.nupkg.sha512"
+    "/Users/polinafurkalo/.nuget/packages/system.identitymodel.tokens.jwt/8.18.0/system.identitymodel.tokens.jwt.8.18.0.nupkg.sha512",
+    "/Users/polinafurkalo/.nuget/packages/microsoft.netcore.app.ref/9.0.17/microsoft.netcore.app.ref.9.0.17.nupkg.sha512",
+    "/Users/polinafurkalo/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.17/microsoft.aspnetcore.app.ref.9.0.17.nupkg.sha512"
   ],
   "logs": []
 }

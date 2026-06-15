@@ -4,6 +4,7 @@ namespace todoApp.Core.Entities;
 
 public class ListItem
 {
+
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
@@ -18,4 +19,5 @@ public class ListItem
     public int? PositionIndex { get; set; }
     public double? PositionX { get; set; }
     public double? PositionY {get;set;}
+
 }

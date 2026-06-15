@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace todoApp.Core.Entities;
 
-public class User
+public class User 
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,7 +23,7 @@ public class User
     public int CompletedTasks { get; set; } = 0;
     public int TotalTasksCount { get; set; } = 0;
     public DateTime? LasActivity { get; set; }
-    public int CurrentStreak { get; set; } = 0;
+    public virtual int CurrentStreak { get; set; } = 0;
     public int LongestStreak { get; set; } = 0;
-
+    
 }

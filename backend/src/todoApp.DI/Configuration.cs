@@ -19,7 +19,7 @@ public static class Configuration
     services.AddTransient<IEventHandler<TaskCompletedEvent>, Data.Handlers.EventHandler>();
     services.AddTransient<IEventHandler<TaskCreatedEvent>, Data.Handlers.EventHandler>();
     services.AddScoped<IEventHandler<TaskDeletedEvent>, Data.Handlers.EventHandler>();
-    services.AddScoped<ICachedStatsService, CachedStatsService>();
+    services.AddScoped<IStatsService, StatsService>();
     return services;
   }
 }

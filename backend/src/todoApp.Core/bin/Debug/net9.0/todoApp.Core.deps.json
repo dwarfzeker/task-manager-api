@@ -40,7 +40,6 @@
       "Microsoft.EntityFrameworkCore/9.0.14": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "9.0.14",
-          "Microsoft.EntityFrameworkCore.Analyzers": "9.0.14",
           "Microsoft.Extensions.Caching.Memory": "9.0.14",
           "Microsoft.Extensions.Logging": "9.0.14"
         },
@@ -59,7 +58,6 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/9.0.14": {},
       "Microsoft.Extensions.Caching.Abstractions/9.0.14": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "9.0.14"
@@ -261,13 +259,6 @@
       "sha512": "sha512-lU0DBe/uZ5hNW1G6tQcikcJhjmDE4eRjRQzaiFi41zxXUMndtZQaGGVNVWXeW6M9K6T212WnBA5cwydzBYmKNA==",
       "path": "microsoft.entityframeworkcore.abstractions/9.0.14",
       "hashPath": "microsoft.entityframeworkcore.abstractions.9.0.14.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Analyzers/9.0.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-u7j9NgArLjf3OzeXX1jx9K59Ytki0CfhMloXxons/cIhq/35QilP6R+NfPlQy/nMax+edeGRRfEg9hWFsjqsXA==",
-      "path": "microsoft.entityframeworkcore.analyzers/9.0.14",
-      "hashPath": "microsoft.entityframeworkcore.analyzers.9.0.14.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/9.0.14": {
       "type": "package",

@@ -1,0 +1,21 @@
+# backend/.gitignore
+
+bin/
+obj/
+*.db
+*.sqlite
+*.sqlite3
+appsettings.Development.json
+appsettings.Local.json
+secrets.json
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+*.log
+.DS_Store
+.vs/
+.idea/
+*.user
+*.suo

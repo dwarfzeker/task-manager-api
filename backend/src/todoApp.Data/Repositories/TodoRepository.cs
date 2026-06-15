@@ -42,26 +42,21 @@ public class TodoRepository : ITodoRepository
 
     public async Task UpdateAsync(ListItem item)
     {
-        if (item.TargetDate == null)
+        var oldTask = await GetByIdAsync(item.Id);
+        if (oldTask == null) throw new InvalidOperationException("task not found");
+        oldTask.Title = item.Title;
+        oldTask.Description = item.Description;
+        oldTask.TargetDate = item.TargetDate;
+        oldTask.IsCompleted = item.IsCompleted;
+        oldTask.PositionX = item.PositionX;
+        oldTask.PositionY = item.PositionY;
+        oldTask.CreatedAt = item.CreatedAt;
+        if (oldTask?.TargetDate == null)
         {
-            item.TargetDate = item.CreatedAt.Date;
+            oldTask!.TargetDate = item.CreatedAt.Date;
         }
-        _context.Tasks.Update(item);
         await _context.SaveChangesAsync();
     }
-    public async Task UpdateRangeAsync(List<ListItem> items)
-    {
-        foreach (var item in items)
-        {
-            if (item.TargetDate == null)
-            {
-                item.TargetDate = item.CreatedAt.Date;
-            }
-        }
-        _context.Tasks.UpdateRange(items);
-        await _context.SaveChangesAsync();
-    }
-    
     public async Task DeleteAsync(Guid id)
     {
         var item = await GetByIdAsync(id);
@@ -75,13 +70,5 @@ public class TodoRepository : ITodoRepository
     public async Task<List<ListItem>> GetByDateAsync(DateTime date)
     {
         return await _context.Tasks.Where(t => t.TargetDate == date.Date && t.TargetDate < date.Date.AddDays(1) ).ToListAsync();
-    }
-
-
-    public async Task<List<int?>> GetPositionIndicesByDateAsync(DateTime date)
-    {
-        var thisDay = await GetByDateAsync(date);
-        var indices = thisDay.Select(t => t.PositionIndex).ToList();
-        return indices;
     }
 }

@@ -49,7 +49,6 @@
       "Microsoft.EntityFrameworkCore/9.0.14": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Abstractions": "9.0.14",
-          "Microsoft.EntityFrameworkCore.Analyzers": "9.0.14",
           "Microsoft.Extensions.Caching.Memory": "9.0.14",
           "Microsoft.Extensions.Logging": "9.0.14"
         },
@@ -68,7 +67,6 @@
           }
         }
       },
-      "Microsoft.EntityFrameworkCore.Analyzers/9.0.14": {},
       "Microsoft.EntityFrameworkCore.Relational/9.0.14": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.14",
@@ -91,8 +89,7 @@
           "Microsoft.Extensions.DependencyModel": "9.0.14",
           "Microsoft.Extensions.Logging": "9.0.14",
           "SQLitePCLRaw.bundle_e_sqlite3": "2.1.10",
-          "SQLitePCLRaw.core": "2.1.10",
-          "System.Text.Json": "9.0.14"
+          "SQLitePCLRaw.core": "2.1.10"
         }
       },
       "Microsoft.EntityFrameworkCore.Sqlite.Core/9.0.14": {
@@ -103,8 +100,7 @@
           "Microsoft.Extensions.Configuration.Abstractions": "9.0.14",
           "Microsoft.Extensions.DependencyModel": "9.0.14",
           "Microsoft.Extensions.Logging": "9.0.14",
-          "SQLitePCLRaw.core": "2.1.10",
-          "System.Text.Json": "9.0.14"
+          "SQLitePCLRaw.core": "2.1.10"
         },
         "runtime": {
           "lib/net8.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {
@@ -299,9 +295,6 @@
         }
       },
       "SQLitePCLRaw.core/2.1.10": {
-        "dependencies": {
-          "System.Memory": "4.5.3"
-        },
         "runtime": {
           "lib/netstandard2.0/SQLitePCLRaw.core.dll": {
             "assemblyVersion": "2.1.10.2445",
@@ -441,15 +434,6 @@
           }
         }
       },
-      "System.Memory/4.5.3": {},
-      "System.Text.Json/9.0.14": {
-        "runtime": {
-          "lib/net9.0/System.Text.Json.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.1426.11910"
-          }
-        }
-      },
       "todoApp.Core/1.0.0": {
         "dependencies": {
           "BCrypt.Net-Next": "4.1.0",
@@ -522,13 +506,6 @@
       "sha512": "sha512-lU0DBe/uZ5hNW1G6tQcikcJhjmDE4eRjRQzaiFi41zxXUMndtZQaGGVNVWXeW6M9K6T212WnBA5cwydzBYmKNA==",
       "path": "microsoft.entityframeworkcore.abstractions/9.0.14",
       "hashPath": "microsoft.entityframeworkcore.abstractions.9.0.14.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Analyzers/9.0.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-u7j9NgArLjf3OzeXX1jx9K59Ytki0CfhMloXxons/cIhq/35QilP6R+NfPlQy/nMax+edeGRRfEg9hWFsjqsXA==",
-      "path": "microsoft.entityframeworkcore.analyzers/9.0.14",
-      "hashPath": "microsoft.entityframeworkcore.analyzers.9.0.14.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore.Relational/9.0.14": {
       "type": "package",
@@ -697,20 +674,6 @@
       "sha512": "sha512-JxKlBca3/eXeH4koAGjEXOwrBdtwyDXwHXdYT5TQunp64TcVBl4wBCfmlGwhSG017Q/Qrz24leLxV6v2eknnJg==",
       "path": "system.identitymodel.tokens.jwt/8.18.0",
       "hashPath": "system.identitymodel.tokens.jwt.8.18.0.nupkg.sha512"
-    },
-    "System.Memory/4.5.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3oDzvc/zzetpTKWMShs1AADwZjQ/36HnsufHRPcOjyRAAMLDlu2iD33MBI2opxnezcVUtXyqDXXjoFMOU9c7SA==",
-      "path": "system.memory/4.5.3",
-      "hashPath": "system.memory.4.5.3.nupkg.sha512"
-    },
-    "System.Text.Json/9.0.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zahtYv0C3LAIUUSiEwuL9QAtal8X1cp32qua8JWMjgoik33BpRU9ziLT9QJukF39y/G43VeTn0XFcDujzeFMMA==",
-      "path": "system.text.json/9.0.14",
-      "hashPath": "system.text.json.9.0.14.nupkg.sha512"
     },
     "todoApp.Core/1.0.0": {
       "type": "project",

@@ -1,0 +1,302 @@
+# ===================
+# IDE и системные файлы
+# ===================
+
+# Visual Studio / Rider
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.csproj.user
+*.dotCover
+*.dbmdl
+*.dbproj.schemaview
+*.pidb
+*.pdb
+*.mdb
+*.exe
+*.dll
+*.bin
+*.cache
+*.ncrunchsolution
+*.ncrunchproject
+*.DotSettings
+*.DotSettings.user
+*.crunchtemp
+.private/
+_backup/
+_upgrade/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+*.log
+
+# ===================
+# Backend (.NET/C#)
+# ===================
+
+# Build artifacts
+/bin/
+/obj/
+/out/
+/publish/
+/artifacts/
+*.nupkg
+*.snupkg
+
+# Test results
+/TestResults/
+*.trx
+*.coverage
+*.coveragexml
+*.coveragexml
+*.html
+*.cobertura.xml
+*.coverlet.json
+/coverage/
+/CoverageResults/
+*.testresult
+
+# Entity Framework Core
+/Migrations/*.Designer.cs
+!Migrations/*.sql
+/Migrations/*.sql
+/app.db
+/*.db
+/*.sqlite
+/*.sqlite3
+
+# User secrets (ВАЖНО!)
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+!appsettings.json
+!appsettings.Production.json
+!appsettings.Test.json
+
+# Files
+*.log
+*.tmp
+*.temp
+*.pid
+*.heapdump
+*.dump
+
+# Windows
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+*.AppleDouble
+*.AppleDesktop
+
+# Linux
+*.swo
+*.swp
+*~
+
+# ===================
+# Frontend (React/Vue/JS)
+# ===================
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.bun/
+.bower/
+.npm/
+.nvm/
+.volta/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+.out/
+.next/
+.nuxt/
+.nuxt-dist/
+.gatsby/
+.storybook-out/
+.parcel-cache/
+.stencil/
+.eslintcache
+
+# Environment files (ВАЖНО!)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+.env*.dev
+.env*.prod
+*.env
+*.env.*
+!.env.example
+!.env.sample
+
+# IDE - frontend specific
+.idea/
+.vscode/
+*.sublime-*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+/coverage/
+/.nyc_output/
+/.cache/
+*.lcov
+*.jest
+*.vitest
+*.testoutput
+
+# Build cache
+.cache/
+.parcel-cache/
+.vercel/
+.netlify/
+.well-known/
+
+# Generated files
+*.generated.*
+*.d.ts
+!.d.ts
+
+# ===================
+# Docker
+# ===================
+
+docker-compose.override.yml
+docker-compose.local.yml
+.docker/
+Dockerfile.*.local
+*.tar.gz
+*.tar.batch
+*.tar
+
+# ===================
+# Secrets & Keys
+# ===================
+
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.secret
+*.secrets
+*.env.encrypted
+*.env.enc
+certificate.pfx
+*.p8
+
+# ===================
+# NuGet
+# ===================
+
+*.nuget/
+packages/
+.nuget/
+global.nuget.json
+
+# ===================
+# Прочие
+# ===================
+
+# Backups
+*.bak
+*.backup
+*.old
+*.orig
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.tgz
+
+# Temp files
+*.tmp
+*.temp
+*.cache
+*.cached
+.temp/
+
+# Large media files (если есть)
+*.mp4
+*.mp3
+*.avi
+*.mov
+*.wav
+*.mkv
+*.pdf
+*.psd
+*.ai
+*.eps
+
+# SSL certificates
+*.pfx
+*.p12
+*.crt
+*.cer
+
+# ===================
+# Миграции (только схема, не данные)
+# ===================
+
+*.db-shm
+*.db-wal
+
+# ===================
+# Node version managers
+# ===================
+
+.node-version
+.nvmrc
+.python-version
+
+# ===================
+# TurboRepo
+# ===================
+
+.turbo/
+
+# ===================
+# Security
+# ===================
+
+*.lock
+*.secret
+*.secrets
+*.key
+*.pem
+*.crt
+*.pfx

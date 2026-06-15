@@ -20,19 +20,19 @@ public class TaskController : ControllerBase
     private readonly ILogger<TaskController> _logger;
     private readonly IEventHandler<TaskCompletedEvent> _completedHandler;
     private readonly IEventHandler<TaskDeletedEvent> _deletedEvent;
-    private readonly ICachedStatsService _cachedStatsService;
+    private readonly IStatsService _statsService;
     private readonly IUserRepository _userRepository;
     public TaskController(ITodoRepository todoRepository, 
         ILogger<TaskController> logger,
         IEventHandler<TaskCompletedEvent> completedEvent,
         IEventHandler<TaskDeletedEvent> deletedEvent,
-       ICachedStatsService cachedStatsService,
+       IStatsService statsService,
         IUserRepository userRepository)
     {
         _todoRepository = todoRepository;
         _logger = logger;
         _completedHandler = completedEvent;
-        _cachedStatsService = cachedStatsService;
+        _statsService = statsService;
         _userRepository = userRepository;
         _deletedEvent = deletedEvent;
     }
@@ -83,10 +83,12 @@ public class TaskController : ControllerBase
     {
         var userId = GetUserId();
         if (dto == null) return BadRequest("empty new task");
+        var taskId = dto.Id != null ?  dto.Id.Value: Guid.NewGuid();
         if (string.IsNullOrWhiteSpace(dto.Title)) return BadRequest("empty task title");
         if (dto.Title.Length > 100) return BadRequest("task title too long");
         var entity = new ListItem
         {
+            Id = taskId,
             Title = dto.Title,
             UserId = userId,
             Description = dto.Description,
@@ -167,13 +169,13 @@ public class TaskController : ControllerBase
     }
         
     [HttpPatch("id/{toggle}")]
-    public async Task<IActionResult> ToggleCompleted(Guid id, [FromBody] PatchTasksDTO dto)
+    public async Task<IActionResult> ToggleCompleted(Guid id, [FromBody] PatchTasksDTO? dto)
     {
         var user = GetUserId();
         var task = await _todoRepository.GetByIdAsync(id);
         if (task == null || user != task.UserId) return NotFound();
         var wasCompleted = task.IsCompleted;
-        var isCompleted = dto.IsCompleted ?? false;
+        var isCompleted = dto!.IsCompleted ?? false;
         if (dto.Title != null) task.Title = dto.Title;
         if (dto.Description != null) task.Description = dto.Description;
         if (dto.IsCompleted != null) task.IsCompleted = dto.IsCompleted.Value;
